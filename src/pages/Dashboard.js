@@ -1,9 +1,11 @@
 import React from 'react';
-import AppLayout from '../layout';
+import { navigate } from '@reach/router';
 import styled from 'styled-components';
+
 import { isAuthenticated } from '../authentication';
 import DeliriumAPI from '../utils/axios';
-import { navigate } from 'gatsby';
+
+import AppLayout from '../layout/AppLayout';
 
 const StyledH1 = styled.h1`
   margin: 20px 0 0 20px;
@@ -81,7 +83,7 @@ const Dashboard = () => {
           try {
             const res = await DeliriumAPI.post('/auth/signout');
             if (res.status === 200) {
-              navigate('/app/signin');
+              navigate('/signin');
             }
           } catch (e) {
             console.log(e);
