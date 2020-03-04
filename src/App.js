@@ -1,12 +1,12 @@
 import React from 'react';
 
-import AppRouter from './components/AppRouter';
+import MainRouter from './components/MainRouter';
 import AppTheme from './theme';
 
 function App() {
   return (
     <AppTheme>
-      <AppRouter />
+      <MainRouter />
     </AppTheme>
   );
 }

@@ -9,6 +9,8 @@ export const isAuthenticated = async () => {
       return true;
     }
   } catch (e) {
+    console.log(e.toJSON());
+    // if (!e.response) return false;
     if (
       e.response.data.message === 'not-authenticated' &&
       e.response.status === 401
@@ -32,7 +34,7 @@ export const useAuthRedirect = () => {
         setRedirect({ shouldRedirect: true, to: '/app/dashboard' });
       }
       setIsLoading(false);
-    }, 500);
+    }, 200);
   }, [pathname]);
   return { isLoading, ...redirect };
 };

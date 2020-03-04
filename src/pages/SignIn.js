@@ -3,6 +3,7 @@ import { navigate } from '@reach/router';
 import { useAuthRedirect } from '../authentication';
 import Form from '../components/Form';
 import styled from 'styled-components';
+import DeliriumAPI from '../utils/axios';
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -21,6 +22,22 @@ const Hero = () => {
   return (
     <StyledDiv>
       <h2>Content</h2>
+      <button
+        onClick={async e => {
+          e.preventDefault();
+          try {
+            const res = await DeliriumAPI.post('/auth/signout');
+            if (res.status === 200) {
+              console.log(res);
+              navigate('/signin');
+            }
+          } catch (e) {
+            console.log(e);
+          }
+        }}
+      >
+        Sign Out
+      </button>
     </StyledDiv>
   );
 };

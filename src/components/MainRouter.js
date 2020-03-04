@@ -3,19 +3,21 @@ import { Router } from '@reach/router';
 
 import Home from '../pages/Home';
 import SignIn from '../pages/SignIn';
-import NotFound from '../pages/404';
 import Dashboard from '../pages/Dashboard';
-import PrivateRoute from './PrivateRoute';
+import NotFound from '../pages/404';
+import App from './App';
 
-const AppRouter = () => {
+const MainRouter = () => {
   return (
     <Router>
       <Home path='/' />
       <SignIn path='/signin' />
-      <PrivateRoute path='/app/dashboard' component={Dashboard} />
+      <App path='/app'>
+        <Dashboard path='dashboard' />
+      </App>
       <NotFound default />
     </Router>
   );
 };
 
-export default AppRouter;
+export default MainRouter;
