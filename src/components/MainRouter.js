@@ -2,21 +2,21 @@ import React from 'react';
 import { Router } from '@reach/router';
 
 import Home from '../pages/Home';
-import SignIn from '../pages/SignIn';
+// import SignIn from '../pages/SignIn';
+// import SignUp from '../pages/SignUp';
 import Dashboard from '../pages/Dashboard';
 import NotFound from '../pages/404';
-import App from './App';
+import SecuredRoutes from './SecuredRoutes';
 import SocketTest from '../pages/SocketTest';
 
 const MainRouter = () => {
   return (
     <Router>
       <Home path='/' />
-      <SignIn path='/signin' />
-      <App path='/app'>
+      <SecuredRoutes path='/app'>
         <Dashboard path='dashboard' />
         <SocketTest path='/socket' />
-      </App>
+      </SecuredRoutes>
       <NotFound default />
     </Router>
   );

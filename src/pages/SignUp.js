@@ -1,9 +1,8 @@
 import React from 'react';
 import { navigate } from '@reach/router';
 import { useAuthRedirect } from '../authentication';
-import SignupForm from '../components/forms/SignupForm';
+import SignUpForm from '../components/forms/SignupForm';
 import styled from 'styled-components';
-import SigninForm from '../components/forms/SigninForm';
 // import DeliriumAPI from '../utils/axios';
 
 const StyledWrapper = styled.div`
@@ -13,7 +12,37 @@ const StyledWrapper = styled.div`
   background-color: rgb(54, 57, 63);
 `;
 
-const Home = () => {
+const StyledDiv = styled.div`
+  background-color: white;
+  width: 50%;
+  height: 100vh;
+`;
+
+const Hero = () => {
+  return (
+    <StyledDiv>
+      <h2>Content</h2>
+      {/* <button
+        onClick={async e => {
+          e.preventDefault();
+          try {
+            const res = await DeliriumAPI.post('/auth/signout');
+            if (res.status === 200) {
+              console.log(res);
+              navigate('/signin');
+            }
+          } catch (e) {
+            console.log(e);
+          }
+        }}
+      >
+        Sign Out
+      </button> */}
+    </StyledDiv>
+  );
+};
+
+const SignUp = () => {
   const { isLoading, shouldRedirect, to } = useAuthRedirect();
 
   if (isLoading) {
@@ -37,10 +66,10 @@ const Home = () => {
 
   return (
     <StyledWrapper>
-      <SigninForm />
-      <SignupForm />
+      <SignUpForm />
+      <Hero />
     </StyledWrapper>
   );
 };
 
-export default Home;
+export default SignUp;

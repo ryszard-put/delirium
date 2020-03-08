@@ -1,9 +1,9 @@
 import React from 'react';
 import { navigate } from '@reach/router';
 import { useAuthRedirect } from '../authentication';
-import Form from '../components/Form';
 import styled from 'styled-components';
 import DeliriumAPI from '../utils/axios';
+import SigninForm from '../components/forms/SigninForm';
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -68,63 +68,9 @@ const SignIn = () => {
   return (
     <StyledWrapper>
       <Hero />
-      <Form type='signin' />
+      <SigninForm />
     </StyledWrapper>
   );
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const { authenticated } = useContext(AuthContext);
-
-  // if (isAuthenticated()) {
-  //   navigate('/app/dashboard');
-  //   return null;
-  // }
-
-  // const handleLogin = async e => {
-  //   e.preventDefault();
-  //   try {
-  //     const res = await DeliriumAPI({
-  //       method: 'POST',
-  //       url: '/auth/signin/local',
-  //       data: { email, password },
-  //     });
-  //     if (res.status === 200) {
-  //       navigate('/app/dashboard');
-  //     }
-  //   } catch (e) {
-  //     console.log(e.response);
-  //   }
-  // };
-
-  // return (
-  //   <div>
-  //     <form>
-  //       <input
-  //         type="email"
-  //         name="email"
-  //         placeholder="email"
-  //         value={email}
-  //         onChange={e => setEmail(e.target.value)}
-  //       />
-  //       <input
-  //         type="password"
-  //         name="password"
-  //         placeholder="password"
-  //         value={password}
-  //         onChange={e => setPassword(e.target.value)}
-  //       />
-  //       <button onClick={handleLogin}>Login</button>
-  //     </form>
-  //     <button
-  //       onClick={async e => {
-  //         e.preventDefault();
-  //         console.log(await isAuthenticated());
-  //       }}
-  //     >
-  //       Check authentication
-  //     </button>
-  //   </div>
-  // );
 };
 
 export default SignIn;

@@ -27,10 +27,10 @@ export const useAuthRedirect = () => {
     setIsLoading(true);
     setTimeout(async () => {
       const authenticated = await isAuthenticated();
-      if (!authenticated && pathname !== '/signin') {
-        setRedirect({ shouldRedirect: true, to: '/signin' });
-      } else if (authenticated && pathname === '/signin') {
+      if (authenticated && pathname === '/') {
         setRedirect({ shouldRedirect: true, to: '/app/dashboard' });
+      } else if (!authenticated && pathname.includes('/app')) {
+        setRedirect({ shouldRedirect: true, to: '/' });
       }
       setIsLoading(false);
     }, 200);

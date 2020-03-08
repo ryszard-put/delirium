@@ -83,7 +83,7 @@ const Dashboard = () => {
           try {
             const res = await DeliriumAPI.post('/auth/signout');
             if (res.status === 200) {
-              navigate('/signin');
+              navigate('/');
             }
           } catch (e) {
             console.log(e);

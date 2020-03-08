@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
-const socket = io('https://delirium-api.thesoban.pl');
+let socket;
 
-const SocketTest = props => {
+const SocketTest = () => {
   const [value, setValue] = useState('');
   useEffect(() => {
+    socket = io('https://delirium-api.thesoban.pl');
     socket.on('connect', () => console.log('socket connected'));
+    socket.on('haxy', res => console.log(res));
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
-  const emitMessage = e => {
-    e.preventDefault();
-    socket.emit('message', value);
-  };
+  // const emitMessage = e => {
+  //   e.preventDefault();
+  //   socket.emit('message', value);
+  // };
 
   return (
     <div>
@@ -25,7 +30,7 @@ const SocketTest = props => {
       <button
         type='button'
         onClick={e => {
-          emitMessage(e);
+          socket.emit('haxy', 'gówno');
         }}
       >
         Send message
